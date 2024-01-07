@@ -1,0 +1,222 @@
+{
+  "Oven-baked falafels": {
+    "Vegetables": {
+      "onion": 1,
+      "garlic": 3,
+      "parsley": 1,
+      "tomatoes": 2,
+      "cucumber": 0.5
+    },
+    "Canned goods": {
+      "chickpeas in brine": 2
+    },
+    "Dairy": {
+      "eggs": 2,
+      "sour cream": 2.5
+    },
+    "Spices and condiments": {
+      "cumin": 2,
+      "chili sauce": 2,
+      "lemon juice": 2,
+      "oil": 1,
+      "salt": 2,
+      "mustard": 1,
+      "pepper": 1
+    },
+    "Bakery": {
+      "breadcrumbs": 1,
+      "pita bread or tortillas": 4
+    },
+    "Produce": {
+      "salad": 300
+    }
+  },
+  "Spicy chicken meatballs with chickpea salad and bread": {
+    "Meat": {
+      "minced chicken max 10% fat": 400
+    },
+    "Vegetables": {
+      "onion": 2,
+      "garlic": 3,
+      "cucumber": 0.5,
+      "bell pepper": 1,
+      "cherry tomatoes": 250,
+      "peas": 200
+    },
+    "Canned goods": {
+      "chickpeas": 2
+    },
+    "Dairy": {
+      "egg": 1
+    },
+    "Spices and condiments": {
+      "cumin": 2,
+      "paprika": 1,
+      "chili": 1.5,
+      "salt": 1,
+      "pepper": 1,
+      "lemon juice": 4,
+      "oil": 2
+    },
+    "Bakery": {
+      "oatmeal": 2,
+      "whole grain baguettes": 1
+    }
+  },
+  "Tart with tomato, onion and feta and green salad": {
+    "Vegetables": {
+      "onion": 2,
+      "cherry tomatoes": 250,
+      "iceberg lettuce": 0.5,
+      "cucumber": 0.5,
+      "corn": 1,
+      "carrots": 2
+    },
+    "Dairy": {
+      "eggs": 5,
+      "sour cream 5%": 4.5,
+      "low-fat salad cheese in cubes 3%": 200,
+      "low-fat mozzarella 13%": 75
+    },
+    "Spices and condiments": {
+      "salt": 1.5,
+      "pepper": 1.5
+    },
+    "Bakery": {
+      "graham flour": 150,
+      "oatmeal": 100,
+      "wheat flour": 4,
+      "whole grain lasagna sheets": 12
+    },
+    "Oils": {
+      "rapeseed oil": 2
+    },
+    "Canned goods": {
+      "chopped tomatoes": 2
+    },
+    "Produce": {
+      "zucchini": 1,
+      "carrot": 1
+    },
+    "Beverages": {
+      "water": 1
+    }
+  },
+  "Sandwich with cod roe salad": {
+    "Seafood": {
+      "cod roe": 1
+    },
+    "Vegetables": {
+      "onion": 2,
+      "iceberg lettuce or cabbage": 250,
+      "carrots": 4,
+      "cucumber": 1
+    },
+    "Dairy": {
+      "low-fat sour cream 5%": 2
+    },
+    "Spices and condiments": {
+      "lemon juice": 1,
+      "salt": 1,
+      "pepper": 1
+    },
+    "Bakery": {
+      "whole grain rolls": 4
+    },
+    "Condiments": {
+      "mayonnaise": 1
+    }
+  },
+  "Vegetarian lasagna with red lentils": {
+    "Vegetables": {
+      "garlic": 3,
+      "onion": 1,
+      "carrot": 1,
+      "zucchini": 1
+    },
+    "Canned goods": {
+      "chopped tomatoes": 2
+    },
+    "Dairy": {
+      "low-fat mozzarella 13%": 150
+    },
+    "Spices and condiments": {
+      "paprika": 1,
+      "thyme": 1,
+      "basil": 1,
+      "oregano": 1,
+      "salt": 1,
+      "pepper": 1
+    },
+    "Bakery": {
+      "whole grain lasagna sheets": 12
+    },
+    "Oils": {
+      "oil": 2
+    },
+    "Produce": {
+      "red lentils": 250
+    },
+    "Beverages": {
+      "water": 4
+    },
+    "Canned goods": {
+      "tomato puree": 140
+    },
+    "Dairy": {
+      "skimmed milk": 5,
+      "wheat flour": 2.5,
+      "butter": 1
+    },
+    "Spices and condiments": {
+      "nutmeg": 0.5
+    }
+  },
+  "Oven-roasted BBQ chicken thighs and cream potatoes with cauliflower and leek": {
+    "Meat": {
+      "chicken thighs with BBQ ready for oven": 1
+    },
+    "Vegetables": {
+      "potatoes": 0.5,
+      "cauliflower": 1,
+      "leeks": 2,
+      "garlic": 1
+    },
+    "Dairy": {
+      "skimmed milk": 5,
+      "oma cooking cream 4%": 250
+    },
+    "Spices and condiments": {
+      "nutmeg": 1,
+      "salt": 1,
+      "pepper": 1
+    }
+  },
+  "Beetroot soup": {
+    "Vegetables": {
+      "beetroots": 600,
+      "potatoes": 500,
+      "onions": 2,
+      "garlic": 3,
+      "fresh ginger": 1
+    },
+    "Spices and condiments": {
+      "cumin": 1,
+      "chili or cayenne pepper": 1,
+      "salt": 1,
+      "pepper": 1
+    },
+    "Bakery": {
+      "whole grain baguettes": 2
+    },
+    "Beverages": {
+      "water": 1
+    },
+    "Canned goods": {
+      "bouillon cubes": 2
+    },
+    "Dairy": {
+      "sour cream": 1
+    }
+  }
+}
