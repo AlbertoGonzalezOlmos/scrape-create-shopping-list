@@ -1,0 +1,95 @@
+    INFO: 2023-12-27 11:16:03,770:               log.py:   20: Logging to c:\Users\Alberto\Desktop\github\scrapeTranslateGroupShoppingList\mdpdf.log
+   DEBUG: 2023-12-27 11:16:03,770:               cli.py:  103: ./outputMealPlan/w52_markdown.md
+    INFO: 2023-12-27 11:16:03,770:         converter.py:   14: ./outputMealPlan/w52_markdown.md
+   DEBUG: 2023-12-27 11:16:03,775:      pdf_renderer.py:  470: printSegment: | Category | Ingredient | Quantity |
+   DEBUG: 2023-12-27 11:16:03,776:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,776:      pdf_renderer.py:  470: printSegment: | --- | --- | --- |
+   DEBUG: 2023-12-27 11:16:03,776:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,776:      pdf_renderer.py:  470: printSegment: | Vegetables | Onions | 6 |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Bell peppers | 7 |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Garlic cloves | 9 |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: Spring onions | 1 bunch |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Carrots | 3 |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Cabbage | 300 g |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Red bell peppers | 2 |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | Spices | Curry or red curry
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: paste | 2 tbsp |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Paprika | 4 tbsp |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Chili powder | to taste |
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,778:      pdf_renderer.py:  470: printSegment: | | Ginger | 2 tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Garlic powder | 1 tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Cumin | 0.5
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Chili or cayenne pepper | to taste |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Salt and pepper | to taste |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Dairy | Buko spicy cheese | 1 pk |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Oma
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: cooking cream 4% | 250 ml |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Grated cheddar | 75 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Meat | Shrimp | 200 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Chicken breast, thigh fillet or inner
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: fillet | 400 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Cod fillets | 225 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Grains | Rice | 1 dl |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Whole grain noodles | 250 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Rice or coarse bulgur |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: 300 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Whole grain tortillas | 6 |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Canned goods | Coconut milk | 400 ml |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Chopped tomatoes | 2 cans |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Kidney
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: beans | 2 cans |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Tomato puree | 70 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Lobster soup | 750 g |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Oils | Oil for frying | 6 tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Sauces | Soy sauce | 2
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: tbsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Balsamic vinegar | 1 tbsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Tahini or peanut butter | 4 tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | Other | Bouillon cube | 3 |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Sugar | 3 tsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: Lime juice | 3 tbsp |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Water | 17.5 dl |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Bread croutons with garlic | 1 pk |
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2023-12-27 11:16:03,780:      pdf_renderer.py:  470: printSegment: | | Cauliflower rice | 1 ps, 350 g |
