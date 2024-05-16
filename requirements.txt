@@ -3,3 +3,5 @@ groq
 ipykernel >= 6.29.4
 openai >= 1.25.1
 python-dotenv >= 1.0.1
+ml-utils-vectordb @ git+http://github.com/SallingGroup-AI-and-ML/ml-utils-vectordb@initial-release
+

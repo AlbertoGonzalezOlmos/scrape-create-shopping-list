@@ -8,6 +8,17 @@ def read_file(file_path_name: str) -> str:
     return content
 
 
+def read_file_line_to_list(file_path_name: str) -> list:
+    # list_content = []
+    # with open(file_path_name, "r") as f:
+    #     for
+    #     list_content.append(f.readline())
+    # return list_content
+
+    with open(file_path_name) as f:
+        return [line.rstrip() for line in f]
+
+
 def write_file(file_path_name: str, response: str) -> None:
     if not file_path_name.endswith(".txt"):
         file_path_name = f"{file_path_name}.txt"
