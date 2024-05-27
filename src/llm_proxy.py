@@ -1,5 +1,6 @@
 from groq import Groq
-from openai import OpenAI
+
+# from openai import OpenAI
 from dotenv import load_dotenv
 import os
 from typing import Literal, Union
@@ -18,7 +19,7 @@ class LlmProxy(ABC):
         self.client_initialize(self.provider)
         pass
 
-    def client_initialize(self, provider: list_providers) -> Union[OpenAI, Groq]:
+    def client_initialize(self, provider: list_providers) -> Groq:
         load_dotenv()
 
         if provider == "groq":
@@ -27,10 +28,10 @@ class LlmProxy(ABC):
             self.model = "llama3-70b-8192"
             # "mixtral-8x7b-32768"
             # "gemma-7b-it"
-        elif provider == "openai":
-            api_key = os.environ.get("OPENAI_API_KEY")
-            self.client = OpenAI(api_key=api_key)
-            self.model = "gpt-4-1106-preview"
+        # elif provider == "openai":
+        #     api_key = os.environ.get("OPENAI_API_KEY")
+        #     self.client = OpenAI(api_key=api_key)
+        #     self.model = "gpt-4-1106-preview"
         print(f"Initializing '{provider}' with model '{self.model}'...")
 
     def get_completion(

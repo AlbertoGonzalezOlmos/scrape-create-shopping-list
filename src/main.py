@@ -6,14 +6,11 @@ from llm_proxy import LlmProxy
 
 
 def main():
-    # client = openai_client_initialize()
-    # input_Ingredients = get_latest_create_text_file()
-    llmObj = LlmProxy("groq")
-    input_Ingredients_path, input_Ingredients_name = get_latest_file(extension="txt")
-    # input_context = input_Ingredients_path + input_Ingredients_name
 
-    input_file = "w28_plan.txt"
-    input_context = input_Ingredients_path + input_file
+    llmObj = LlmProxy("groq")
+    input_Ingredients_path, input_Ingredients_name = get_latest_file()
+
+    input_context = input_Ingredients_path + input_Ingredients_name
 
     prompt = f"""
 
@@ -73,7 +70,7 @@ def main():
 
         output_path, output_name = get_latest_file(output_file, extension="txt")
         output_file = output_path + output_name
-        write_pdf(output_file, output_name)
+        write_pdf(output_file, input_Ingredients_name)
 
     pass
 
