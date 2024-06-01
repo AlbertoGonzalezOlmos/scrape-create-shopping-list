@@ -13,10 +13,11 @@ def _import_list_recipes(file_recpie_name: str) -> list:
 
 
 def trim_strings(string_recipes_ingredients: str, list_recipes: list) -> str:
-    strings_to_trim = set(list_recipes.append("INGREDIENSER"))
+    strings_to_trim = list_recipes.append("INGREDIENSER")
     trimmed_ingredients = ""
-    # for rec_ing_line in string_recipes_ingredients:
-    #     if rec_ing_line not in strings_to_trim:
+    for rec_ing_line in string_recipes_ingredients:
+        if rec_ing_line not in strings_to_trim:
+            print(rec_ing_line)
 
     #         trimmed_ingredients.
     # return trimmed_ingredients

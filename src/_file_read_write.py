@@ -3,6 +3,10 @@ from _file_paths import create_output_path
 
 
 def read_file(file_path_name: str) -> str:
+
+    if not file_path_name.endswith(".txt"):
+        file_path_name = f"{file_path_name}.txt"
+
     with open(file_path_name, "r") as f:
         content = f.read()
     return content
@@ -27,15 +31,16 @@ def write_file(file_path_name: str, response: str) -> None:
         f.write(response)
 
 
-def write_pdf(input_file: str, output_name: str) -> None:
-    output_path = f"{output_path}_PDF"
-    output_path = create_output_path(output_name)
+def write_pdf(input_file: str, output_path_name: str) -> None:
+
+    if output_path_name.endswith(".txt"):
+        output_path_name = output_path_name[:-4]
+
+    if not output_path_name.endswith(".pdf") < 0:
+        output_path_name = f"{output_path_name}.pdf"
+
     # Create a new FPDF object
     pdf = FPDF()
-
-    # Open the text file and read its contents
-    with open(input_file, "r") as f:
-        text = f.read()
 
     # Add a new page to the PDF
     pdf.add_page()
@@ -44,14 +49,7 @@ def write_pdf(input_file: str, output_name: str) -> None:
     pdf.set_font("Arial", size=12)
 
     # Write the text to the PDF
-    pdf.write(5, text)
+    pdf.write(5, input_file)
 
-    if output_name.find(".txt") > 0:
-        output_name = output_name[:-4]
-    if output_name.find(".pdf") < 0:
-        output_name = f"{output_name}.pdf"
-
-    print(f"pdf output path: {output_path} and ")
-    print(f"output name: {output_name}")
     # Save the PDF
-    pdf.output(output_path + output_name)
+    pdf.output(output_path_name)

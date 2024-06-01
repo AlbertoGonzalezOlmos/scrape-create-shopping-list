@@ -36,26 +36,31 @@ class LlmProxy(ABC):
 
     def get_completion(
         self,
-        prompt: str,
-        messages: list = [],
+        system_prompt: str = "",
+        user_prompt: str = "",
         temperature: int = 0,
     ) -> str:
 
-        if not messages:
-            messages = [
-                {
-                    "role": "system",
-                    "content": "You are a useful and concise inventory manager in a grocery store",
-                },
-                {"role": "user", "content": prompt},
-            ]
-        completion = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=temperature,
-        )
+        if not system_prompt:
+            system_prompt = "You are a useful assistant."
+        llm_message = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
 
-        return completion.choices[0].message.content
+        llm_response = ""
+
+        if self.provider == "groq" or self.provider == "openai":
+
+            completion = self.client.chat.completions.create(
+                model=self.model,
+                messages=llm_message,
+                temperature=temperature,
+            )
+
+            llm_response = completion.choices[0].message.content
+
+        return llm_response
 
     def prompt_chain(
         self,
@@ -68,15 +73,15 @@ class LlmProxy(ABC):
             input_context_text = read_file(input_context_path_name)
 
         output_response_path = create_output_path(output_response_name)
-        output_response = output_response_path + output_response_name
+        output_response_path_name = output_response_path + output_response_name
 
-        print(f"output response: {output_response}")
+        print(f"output path: {output_response_path_name}")
 
         prompt = f"{prompt}<{input_context_text}>"
 
         response = self.get_completion(prompt=prompt)
 
-        write_file(output_response, response)
+        write_file(output_response_path_name, response)
 
         return response
 
@@ -94,7 +99,7 @@ def main():
     """
 
     llmObj = LlmProxy("groq")
-    completion = llmObj.get_completion(prompt=shopping_list)
+    completion = llmObj.get_completion(user_prompt=shopping_list)
 
     print(completion)
 
