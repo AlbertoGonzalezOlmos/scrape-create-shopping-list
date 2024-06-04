@@ -31,7 +31,7 @@ def write_file(file_path_name: str, response: str) -> None:
         f.write(response)
 
 
-def write_pdf(input_file: str, output_path_name: str) -> None:
+def write_pdf(output_path_name: str, input_file: str) -> None:
 
     if output_path_name.endswith(".txt"):
         output_path_name = output_path_name[:-4]
