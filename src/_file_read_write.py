@@ -1,6 +1,10 @@
 from fpdf import FPDF
 from _file_paths import create_output_path
 
+def check_file_exist(file_path_name: str) -> bool:
+    pass
+    
+
 
 def read_file(file_path_name: str) -> str:
 
@@ -10,6 +14,7 @@ def read_file(file_path_name: str) -> str:
     with open(file_path_name, "r") as f:
         content = f.read()
     return content
+
 
 
 def read_file_line_to_list(file_path_name: str) -> list:
