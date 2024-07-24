@@ -3,9 +3,9 @@
 
 def main():
 
-    from _file_paths import get_latest_file, create_output_path
+    from file_paths import get_latest_file, create_output_path
 
-    from _file_read_write import read_file, write_file, write_pdf
+    from file_read_write import read_file, write_file, write_pdf
     from llm_proxy import LlmProxy
 
     llmObj = LlmProxy("groq")
@@ -155,9 +155,9 @@ def main():
     ##################################################
     ##################################################
 
-    from _file_paths import get_latest_file, create_output_path
+    from file_paths import get_latest_file, create_output_path
 
-    from _file_read_write import read_file, write_file, write_pdf
+    from file_read_write import read_file, write_file, write_pdf
 
     from llm_proxy import LlmProxy
     import ast

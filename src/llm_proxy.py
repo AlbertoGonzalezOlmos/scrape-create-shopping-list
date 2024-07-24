@@ -6,9 +6,9 @@ import os
 from typing import Literal, Union
 from abc import ABC
 
-from _file_read_write import read_file, write_file
+from file_read_write import read_file, write_file
 
-from _file_paths import create_output_path
+from file_paths import create_output_path
 
 list_providers = Literal["groq", "openai"]
 

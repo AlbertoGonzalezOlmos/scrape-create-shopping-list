@@ -1,5 +1,5 @@
 from fpdf import FPDF
-from _file_paths import create_output_path
+from file_paths import create_output_path
 
 def check_file_exist(file_path_name: str) -> bool:
     pass

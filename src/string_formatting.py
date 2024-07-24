@@ -1,5 +1,5 @@
-from _file_read_write import read_file, read_file_line_to_list
-from _file_paths import get_latest_file
+from file_read_write import read_file, read_file_line_to_list
+from file_paths import get_latest_file
 import ast
 import io
 
@@ -106,6 +106,21 @@ def extract_strings_from_list(
 
     #         trimmed_ingredients.
     # return trimmed_ingredients
+    
+def format_recipe_names_list_to_text(recipe_names_url_list:list) -> str:
+    out_text_name_url = ""
+    for name_url in recipe_names_url_list:
+        out_text_name_url += name_url[0] + " \n"
+        out_text_name_url += name_url[1] + " \n"
+        out_text_name_url += " \n"
+    return out_text_name_url
+        
+
+def format_quantity_ingredients_listtext_to_listdictionary(quantity_ingredients_list:list) -> list[dict]:
+    out_list_quantity_ingredient = []
+    for quantity_ingredient in quantity_ingredients_list:
+        out_list_quantity_ingredient.append({"quantity":quantity_ingredient[0],"ingredient":quantity_ingredient[1]}) 
+    return out_list_quantity_ingredient
 
 
 def main():

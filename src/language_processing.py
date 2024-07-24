@@ -65,6 +65,46 @@ def llm_extract_recipe_names(llmObj: LlmProxy, text_with_recipes: str) -> list:
 
     return llm_response_recipe_names
 
+def llm_categorize_ingredient_by_aile(
+    llmObj: LlmProxy, input_ingredient: str, textlist_of_ailes: str = ""
+) -> str:
+
+    if not textlist_of_ailes:
+        list_of_ailes = get_list_of_ailes()
+        string_before = "        - "
+        string_after = ", "
+        textlist_of_ailes = format_list_to_textlist(
+            list_of_ailes, string_before, string_after
+        )
+
+    user_parse_categorize_ingredients = f"""
+
+    Associate the ingredient between <> to one of the following categories:
+    {textlist_of_ailes} 
+    
+    Output only the name of the category.
+        
+    ingredient:
+    <
+    {input_ingredient}
+    >
+    
+    Do not output anything else.
+    Do not say anything else.
+    
+    """
+
+    system_parse_categorize_ingredients = (
+        "You are a useful and concise inventory manager in a grocery store."
+    )
+
+    output_aile = llmObj.get_completion(
+        system_prompt=system_parse_categorize_ingredients,
+        user_prompt=user_parse_categorize_ingredients,
+    )
+
+    return output_aile
+
 
 def llm_categorize_ingredient_by_aile_extract_quantity(
     llmObj: LlmProxy, input_ingredient: str, textlist_of_ailes: str = ""
@@ -140,8 +180,45 @@ def llm_sum_same_ingredients(llmObj, ingredients_aile):
 
     return llm_sum_ingredients
 
-
 def pipeline_get_grocery_list(
+    llmObj: LlmProxy, list_with_quantity_ingredients: list[dict]
+) -> list:
+    out_grocery_list = []
+    
+    list_of_ailes = get_list_of_ailes()
+    string_before = "        - "
+    string_after = ", "
+    textlist_of_ailes = format_list_to_textlist(
+        list_of_ailes, string_before, string_after
+    )
+    
+    print(
+        _col_text(
+            string="Categorizing ingredients by aile/ creating dictionary ... ",
+            fore_colour="black",
+            back_colour="green",
+        )
+    )
+    
+    for iIngredient in tqdm(list_with_quantity_ingredients):
+
+        print(
+            _col_text(
+                string="  - working on ingredient: ",
+                fore_colour="yellow",
+                back_colour="black",
+            )
+        )
+        print(iIngredient["ingredient"])
+
+        aile = llm_categorize_ingredient_by_aile(
+            llmObj, iIngredient["ingredient"], textlist_of_ailes
+        )
+        out_grocery_list.append({"quantity":iIngredient["quantity"],"ingredient":iIngredient["ingredient"],"aile":aile})
+    return out_grocery_list
+
+
+def pipeline_get_grocery_list_from_text(
     llmObj: LlmProxy, text_with_recipes: str
 ) -> tuple[str, str]:
     out_grocery_list = []
@@ -212,6 +289,7 @@ def pipeline_get_grocery_list(
             )
         )
         print(ingredient)
+        print("\n")
 
     print(
         _col_text(
@@ -220,6 +298,7 @@ def pipeline_get_grocery_list(
             back_colour="green",
         )
     )
+    print("\n")
 
     out_grocery_list = ""
     for aile in list_of_ailes:
@@ -271,13 +350,21 @@ def pipeline_get_grocery_list(
             print(grouped_ingredients_aile)
 
             print("")
+            print("\n")
 
     return out_grocery_list, format_list_to_textlist(list_recipes)
 
+def get_week_number(week_title:str) -> str:
+    uge_string = "uge"
+    number_starts = week_title.lower().find(uge_string) + len(uge_string)
+    week_number = week_title[number_starts:number_starts+4].strip()
+    out_week_number = week_number.replace(",","")
+    return out_week_number
+
 
 def main():
-    from _file_paths import get_latest_file
-    from _file_read_write import read_file
+    from file_paths import get_latest_file
+    from file_read_write import read_file
 
     llmObj = LlmProxy("groq")
 
