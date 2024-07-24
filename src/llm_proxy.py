@@ -1,18 +1,17 @@
 from groq import Groq
 from together import Together
 
-# from openai import OpenAI
 from dotenv import load_dotenv
 import os
 from typing import Literal, Union
 from abc import ABC
 import datetime
 
-from _file_read_write import read_file, write_file
+from file_read_write import read_file, write_file
 
-from _file_paths import create_output_path
+from file_paths import create_output_path
 
-list_providers = Literal["groq", "together", "openai"]
+list_providers = Literal["groq", "together"]
 
 
 class LlmProxy(ABC):
@@ -46,10 +45,6 @@ class LlmProxy(ABC):
             # "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"
             # "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo"
 
-        # elif provider == "openai":
-        #     api_key = os.environ.get("OPENAI_API_KEY")
-        #     self.client = OpenAI(api_key=api_key)
-        #     self.model = "gpt-4-1106-preview"
         print(f"Provider: '{provider}' was initialized with model '{self.model}'...")
 
     def tokenizer_initialize(self) -> None:
@@ -89,7 +84,7 @@ class LlmProxy(ABC):
 
         llm_response = ""
 
-        if self.provider in ["groq", "together", "openai"]:
+        if self.provider in ["groq", "together"]:
 
             completion = self.client.chat.completions.create(
                 model=self.model,
@@ -98,20 +93,6 @@ class LlmProxy(ABC):
             )
 
             llm_response = completion.choices[0].message.content
-
-        if self.provider == "anthropic":
-
-            completion = self.client.messages.create(
-                max_tokens=1000,
-                model=self.model,
-                temperature=temperature,
-                system=llm_message[0]["content"],
-                messages=[
-                    {"role": "user", "content": [{"type": "text", "text": user_prompt}]}
-                ],
-            )
-
-            llm_response = completion.content[0].text
 
         llm_message_result_list = [
             ", ".join([f"{key}: {value}" for key, value in dictionary.items()])
