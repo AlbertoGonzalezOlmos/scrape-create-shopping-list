@@ -39,7 +39,7 @@ def main():
         model = "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"
     except:
         provider = "groq"
-        model = "llama-3.1-8b-instant"
+        model = "llama-3.1-70b-versatile"
 
     llmObj = LlmProxy(provider, model)
     grocery_list = pipeline_get_grocery_list_from_dict(
