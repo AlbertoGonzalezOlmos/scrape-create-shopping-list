@@ -17,7 +17,9 @@ def main():
 
     week_number = get_week_number(week_title)
 
-    # recipe_names_url_list, list_quantity_ingredients = scrape_recipe_names_ingredients(most_recent_week_url)
+    recipe_names_url_list, list_quantity_ingredients = scrape_recipe_names_ingredients(
+        most_recent_week_url
+    )
 
     recipe_names_url_text = format_recipe_names_list_to_text(recipe_names_url_list)
 
@@ -33,26 +35,29 @@ def main():
         )
     )
 
-    try:
-        llmObj = LlmProxy("together")
-    except:
-        llmObj = LlmProxy("groq")
+    print(quantity_ingredient_listdict)
+    print(recipe_names_url_text)
 
-    grocery_list = pipeline_get_grocery_list(llmObj, quantity_ingredient_listdict)
+    # try:
+    #     llmObj = LlmProxy("together")
+    # except:
+    #     llmObj = LlmProxy("groq")
 
-    # input_week_path, input_week_name = get_latest_file()
-    # input_week_path_name = input_week_path + input_week_name
-    # text_with_recipes = read_file(input_week_path_name)
+    # grocery_list = pipeline_get_grocery_list(llmObj, quantity_ingredient_listdict)
 
-    # grocery_list, recipe_names = pipeline_get_grocery_list_from_text(llmObj, text_with_recipes)
+    # # input_week_path, input_week_name = get_latest_file()
+    # # input_week_path_name = input_week_path + input_week_name
+    # # text_with_recipes = read_file(input_week_path_name)
 
-    output_grocery_list_PDF = "out_grocery_list_PDF"
-    output_grocery_list_PDF_path = create_output_path(output_grocery_list_PDF)
-    output_grocery_list_PDF_name = f"w{week_number}_grocery_list"
-    output_grocery_list_PDF_path_name = (
-        output_grocery_list_PDF_path + output_grocery_list_PDF_name
-    )
-    write_pdf(output_grocery_list_PDF_path_name, grocery_list)
+    # # grocery_list, recipe_names = pipeline_get_grocery_list_from_text(llmObj, text_with_recipes)
+
+    # output_grocery_list_PDF = "out_grocery_list_PDF"
+    # output_grocery_list_PDF_path = create_output_path(output_grocery_list_PDF)
+    # output_grocery_list_PDF_name = f"w{week_number}_grocery_list"
+    # output_grocery_list_PDF_path_name = (
+    #     output_grocery_list_PDF_path + output_grocery_list_PDF_name
+    # )
+    # write_pdf(output_grocery_list_PDF_path_name, grocery_list)
 
 
 if __name__ == "__main__":
