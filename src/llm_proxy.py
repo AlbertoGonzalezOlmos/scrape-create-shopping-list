@@ -12,7 +12,7 @@ from file_read_write import read_file, write_file
 
 from file_paths import create_output_path
 
-list_providers = Literal["groq", "together", "openai"]
+list_providers = Literal["groq", "together"]
 
 
 class LlmProxy(ABC):

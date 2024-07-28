@@ -65,6 +65,7 @@ def llm_extract_recipe_names(llmObj: LlmProxy, text_with_recipes: str) -> list:
 
     return llm_response_recipe_names
 
+
 def llm_categorize_ingredient_by_aile(
     llmObj: LlmProxy, input_ingredient: str, textlist_of_ailes: str = ""
 ) -> str:
@@ -157,12 +158,61 @@ def llm_categorize_ingredient_by_aile_extract_quantity(
     return checked_llm_parse_categorize_ingredients
 
 
+def llm_categorize_ingredient_by_aile(
+    llmObj: LlmProxy, input_ingredient: str, textlist_of_ailes: str = ""
+) -> str:
+
+    if not textlist_of_ailes:
+        list_of_ailes = get_list_of_ailes()
+        string_before = "        - "
+        string_after = ", "
+        textlist_of_ailes = format_list_to_textlist(
+            list_of_ailes, string_before, string_after
+        )
+
+    user_parse_categorize_ingredients = f"""
+
+    Follow the instructions below to categorize the Ingredient between <> and output the corresponding aile:
+    1. Associate the Ingredient between < and > to one of the Ailes between ''' and ''':
+    
+    Ingredient:
+<
+{input_ingredient}
+>
+
+    Ailes:
+'''
+{textlist_of_ailes} 
+'''
+
+    2. Output only the name of the aile.
+        
+    3. Do not say anything else.
+    
+    """
+
+    system_parse_categorize_ingredients = (
+        "You are a useful and concise inventory manager in a grocery store."
+    )
+
+    llm_output_aile = llmObj.get_completion(
+        system_prompt=system_parse_categorize_ingredients,
+        user_prompt=user_parse_categorize_ingredients,
+    )
+
+    return llm_output_aile
+
+
 def llm_sum_same_ingredients(llmObj, ingredients_aile):
 
     user_sum_ingredients = f"""
 
-    Add the quantities of the following ingredients:
+    Sum the quantities of the same Ingredients between <>:
+    
+    Ingredients:
+<
 {ingredients_aile} 
+>
 
     Output your response in the same format as the list of ingredients.
     Do not say anything else.
@@ -180,18 +230,19 @@ def llm_sum_same_ingredients(llmObj, ingredients_aile):
 
     return llm_sum_ingredients
 
+
 def pipeline_get_grocery_list(
     llmObj: LlmProxy, list_with_quantity_ingredients: list[dict]
 ) -> list:
     out_grocery_list = []
-    
+
     list_of_ailes = get_list_of_ailes()
     string_before = "        - "
     string_after = ", "
     textlist_of_ailes = format_list_to_textlist(
         list_of_ailes, string_before, string_after
     )
-    
+
     print(
         _col_text(
             string="Categorizing ingredients by aile/ creating dictionary ... ",
@@ -199,7 +250,7 @@ def pipeline_get_grocery_list(
             back_colour="green",
         )
     )
-    
+
     for iIngredient in tqdm(list_with_quantity_ingredients):
 
         print(
@@ -214,7 +265,13 @@ def pipeline_get_grocery_list(
         aile = llm_categorize_ingredient_by_aile(
             llmObj, iIngredient["ingredient"], textlist_of_ailes
         )
-        out_grocery_list.append({"quantity":iIngredient["quantity"],"ingredient":iIngredient["ingredient"],"aile":aile})
+        out_grocery_list.append(
+            {
+                "quantity": iIngredient["quantity"],
+                "ingredient": iIngredient["ingredient"],
+                "aile": aile,
+            }
+        )
     return out_grocery_list
 
 
@@ -354,11 +411,133 @@ def pipeline_get_grocery_list_from_text(
 
     return out_grocery_list, format_list_to_textlist(list_recipes)
 
-def get_week_number(week_title:str) -> str:
+
+def pipeline_get_grocery_list_from_dict(
+    llmObj: LlmProxy, list_with_quantity_ingredients: list[dict]
+) -> list:
+
+    list_of_ailes = get_list_of_ailes()
+    string_before = "        - "
+    string_after = ", "
+    textlist_of_ailes = format_list_to_textlist(
+        list_of_ailes, string_before, string_after
+    )
+
+    print(
+        _col_text(
+            string="Categorizing ingredients by aile/ creating dictionary ... ",
+            fore_colour="black",
+            back_colour="green",
+        )
+    )
+    list_dict_quant_ing_aile = []
+    for iIngredient in tqdm(list_with_quantity_ingredients):
+
+        print(
+            _col_text(
+                string="  - working on ingredient: ",
+                fore_colour="yellow",
+                back_colour="black",
+            )
+        )
+
+        aile = llm_categorize_ingredient_by_aile(
+            llmObj, iIngredient["ingredient"], textlist_of_ailes
+        )
+
+        print(aile)
+
+        print(
+            _col_text(
+                string="  - ",
+                fore_colour="yellow",
+                back_colour="black",
+            ),
+            "{}".format(iIngredient["ingredient"]),
+            _col_text(
+                string="  -> ",
+                fore_colour="yellow",
+                back_colour="black",
+            ),
+            f"{aile}",
+        )
+        list_dict_quant_ing_aile.append(
+            {
+                "quantity": iIngredient["quantity"],
+                "ingredient": iIngredient["ingredient"],
+                "aile": aile,
+            }
+        )
+
+    print(
+        _col_text(
+            string="Adding together same ingredients in each category... ",
+            fore_colour="black",
+            back_colour="green",
+        )
+    )
+    print("\n")
+
+    out_grocery_list = ""
+    for aile in list_of_ailes:
+
+        print(
+            _col_text(
+                string="  - Aile:",
+                fore_colour="green",
+                back_colour="black",
+            )
+            + _col_text(
+                string=f"{aile}",
+                fore_colour="black",
+                back_colour="blue",
+            )
+        )
+
+        ingredients_aile = ""
+        for i in list_dict_quant_ing_aile:
+            if i["aile"] == aile:
+                ingredients_aile += "{} {} \n".format(i["quantity"], i["ingredient"])
+        if ingredients_aile.strip():
+
+            grouped_ingredients_aile = llm_sum_same_ingredients(
+                llmObj, ingredients_aile
+            )
+
+            out_grocery_list += f"** {aile} **: \n"
+            out_grocery_list += "{} \n".format(grouped_ingredients_aile)
+
+            print(
+                _col_text(
+                    string="  - Before sum:",
+                    fore_colour="yellow",
+                    back_colour="black",
+                )
+            )
+
+            print(ingredients_aile)
+
+            print(
+                _col_text(
+                    string="  - After sum:",
+                    fore_colour="yellow",
+                    back_colour="black",
+                )
+            )
+
+            print(grouped_ingredients_aile)
+
+            print("")
+            print("\n")
+
+    return out_grocery_list
+
+
+def get_week_number(week_title: str) -> str:
     uge_string = "uge"
     number_starts = week_title.lower().find(uge_string) + len(uge_string)
-    week_number = week_title[number_starts:number_starts+4].strip()
-    out_week_number = week_number.replace(",","")
+    week_number = week_title[number_starts : number_starts + 4].strip()
+    out_week_number = week_number.replace(",", "")
     return out_week_number
 
 
@@ -366,10 +545,16 @@ def main():
     from file_paths import get_latest_file
     from file_read_write import read_file
 
-    llm_chat = LlmProxy("Together")
+    llm_chat = LlmProxy("together")
 
-    quantity_ingredients_dict_path = "./quantity_ingredients.txt"
-    
+    quantity_ingredients_dict_path = "./src/quantity_ingredients.txt"
+    with open(quantity_ingredients_dict_path, "r") as file:
+        quantity_ingredients_dict = file.read()
+
+    quant_ing_dict = ast.literal_eval(quantity_ingredients_dict)
+    grocery_list = pipeline_get_grocery_list_from_dict(llm_chat, quant_ing_dict)
+
+    print(grocery_list)
 
 
 if __name__ == "__main__":
