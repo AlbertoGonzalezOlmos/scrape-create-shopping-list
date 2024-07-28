@@ -38,12 +38,12 @@ def main():
     print(quantity_ingredient_listdict)
     print(recipe_names_url_text)
 
-    # try:
-    #     llmObj = LlmProxy("together")
-    # except:
-    #     llmObj = LlmProxy("groq")
+    try:
+        llmObj = LlmProxy("together")
+    except:
+        llmObj = LlmProxy("groq")
 
-    # grocery_list = pipeline_get_grocery_list(llmObj, quantity_ingredient_listdict)
+    grocery_list = pipeline_get_grocery_list(llmObj, quantity_ingredient_listdict)
 
     # # input_week_path, input_week_name = get_latest_file()
     # # input_week_path_name = input_week_path + input_week_name

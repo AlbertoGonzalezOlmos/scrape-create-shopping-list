@@ -366,69 +366,10 @@ def main():
     from file_paths import get_latest_file
     from file_read_write import read_file
 
-    llmObj = LlmProxy("groq")
+    llm_chat = LlmProxy("Together")
 
-    debugmode = True
-
-    if debugmode:
-
-        ingredients_string_string_list_dict_string = read_file(
-            "./src/text_list_dicts_ingredients.txt"
-        )
-
-        ingredients_string_list_dict_string = ast.literal_eval(
-            ingredients_string_string_list_dict_string
-        )
-
-        ingredients_list_dict = ast.literal_eval(ingredients_string_list_dict_string)
-
-        list_of_ailes = get_list_of_ailes()
-
-    else:
-
-        input_week_path, input_week_name = get_latest_file()
-        input_week_path_name = input_week_path + input_week_name
-        text_with_recipes = read_file(input_week_path_name)
-
-        grocery_list = pipeline_get_grocery_list(llmObj, text_with_recipes)
-
-        print("output from grocery list:")
-        print(grocery_list)
-
-        ingredients_list_dict = grocery_list
-
-    ingredients_list = ""
-    for aile in list_of_ailes:
-
-        ingredients_aile = ""
-        for i in ingredients_list_dict:
-            if i["aile"] == aile:
-                ingredients_aile += "{} {} \n".format(i["quantity"], i["ingredient"])
-        if ingredients_aile.strip():
-            print("################################")
-            print("Before sum:")
-            print(ingredients_aile)
-            grouped_ingredients_aile = llm_sum_same_ingredients(
-                llmObj, ingredients_aile
-            )
-            print("After sum:")
-            print(grouped_ingredients_aile)
-
-            print("")
-
-            ingredients_list += f"** {aile} **: \n"
-            ingredients_list += "{} \n".format(grouped_ingredients_aile)
-
-        # # print(aile)
-        # textlist_ingredients_grouped = [
-        #     "{} {} \n".format(i["quantity"], i["ingredient"])
-        #     for i in ingredients_list_dict
-        #     if i["aile"] == aile
-        # ]
-        # print(textlist_ingredients_grouped)
-        # ingredients_list.append()
-    # print(ingredients_list)
-    pass
+    quantity_ingredients_dict_path = "./quantity_ingredients.txt"
+    
 
 
 if __name__ == "__main__":
