@@ -7,3 +7,5 @@ tqdm
 colorama
 beautifulsoup4
 requests
+secure-smtplib >= 0.1.1
+selenium
