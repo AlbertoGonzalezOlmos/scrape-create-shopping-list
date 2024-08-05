@@ -1,4 +1,4 @@
-from llm_proxy import LlmProxy
+from llm_proxy.initialize_provider import LlmProxy
 from tqdm import tqdm
 from string_formatting import (
     format_list_to_textlist,
@@ -8,8 +8,6 @@ from string_formatting import (
 
 from printing_output_evaluation import _col_text
 
-
-from llm_proxy import LlmProxy
 import ast
 
 

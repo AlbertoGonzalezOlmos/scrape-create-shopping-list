@@ -5,7 +5,7 @@ def main():
         format_recipe_names_list_to_text,
         format_quantity_ingredients_listtext_to_listdictionary,
     )
-    from llm_proxy import LlmProxy
+    from llm_proxy.initialize_provider import LlmProxy
     from language_processing import (
         get_week_number,
         pipeline_get_grocery_list_from_dict,
@@ -33,15 +33,16 @@ def main():
             list_quantity_ingredients
         )
     )
-
+    modality = "chat"
     try:
         provider = "together"
+
         model = "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"
     except:
         provider = "groq"
         model = "llama-3.1-70b-versatile"
 
-    llmObj = LlmProxy(provider, model)
+    llmObj = LlmProxy(provider=provider, modality=modality, model=model)
     grocery_list = pipeline_get_grocery_list_from_dict(
         llmObj, quantity_ingredient_listdict
     )

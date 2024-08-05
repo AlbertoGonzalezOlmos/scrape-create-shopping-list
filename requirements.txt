@@ -1,8 +1,7 @@
 fpdf >= 1.7.2
-groq
-together >=1.2.3
+git+https://github.com/AlbertoGonzalezOlmos/llm-proxy.git#egg=llm-proxy
 ipykernel >= 6.29.4
-python-dotenv >= 1.0.1
+
 tqdm
 colorama
 beautifulsoup4
