@@ -1,7 +1,6 @@
 fpdf >= 1.7.2
 git+https://github.com/AlbertoGonzalezOlmos/llm-proxy.git#egg=llm-proxy
 ipykernel >= 6.29.4
-
 tqdm
 colorama
 beautifulsoup4

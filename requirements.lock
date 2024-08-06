@@ -13,7 +13,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
 comm==0.2.2
-debugpy==1.8.3
+debugpy==1.8.5
 decorator==5.1.1
 distro==1.9.0
 eval_type_backport==0.2.0
@@ -32,7 +32,7 @@ ipython==8.26.0
 jedi==0.19.1
 jupyter_client==8.6.2
 jupyter_core==5.7.2
-llm_proxy @ git+https://github.com/AlbertoGonzalezOlmos/llm-proxy.git@ca0c6fe9b899ff6ba7924bb498c1270198cb1022
+llm_proxy @ git+https://github.com/AlbertoGonzalezOlmos/llm-proxy.git@ec1fde47a81f03b12f1e91426c2d433d37e5790a
 markdown-it-py==3.0.0
 matplotlib-inline==0.1.7
 mdurl==0.1.2

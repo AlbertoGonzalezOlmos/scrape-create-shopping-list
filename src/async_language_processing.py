@@ -1,4 +1,4 @@
-from llm_proxy.initialize_provider import LlmProxy
+from llm_proxy.initialize_provider import LlmProxy, TandemProxy
 from tqdm import tqdm
 from string_formatting import (
     format_list_to_textlist,
@@ -8,6 +8,7 @@ from string_formatting import (
 
 from printing_output_evaluation import _col_text
 
+from typing import Union
 import ast
 
 
@@ -32,7 +33,9 @@ def get_list_of_ailes(add_to_list: list = []) -> list:
     return output_list
 
 
-def llm_extract_recipe_names(llmObj: LlmProxy, text_with_recipes: str) -> list:
+def llm_extract_recipe_names(
+    llmObj: Union[LlmProxy, TandemProxy], text_with_recipes: str
+) -> list:
 
     ########################################################
     ########################################################
@@ -65,7 +68,7 @@ def llm_extract_recipe_names(llmObj: LlmProxy, text_with_recipes: str) -> list:
 
 
 def llm_categorize_ingredient_by_aile(
-    llmObj: LlmProxy,
+    llmObj: Union[LlmProxy, TandemProxy],
     input_ingredient: str,
     textlist_of_ailes: str = "",
 ) -> str:
@@ -108,7 +111,7 @@ def llm_categorize_ingredient_by_aile(
 
 
 def llm_categorize_ingredient_by_aile_extract_quantity(
-    llmObj: LlmProxy,
+    llmObj: Union[LlmProxy, TandemProxy],
     input_ingredient: str,
     textlist_of_ailes: str = "",
 ) -> str:
@@ -161,7 +164,7 @@ def llm_categorize_ingredient_by_aile_extract_quantity(
 
 
 def llm_categorize_ingredient_by_aile(
-    llmObj: LlmProxy,
+    llmObj: Union[LlmProxy, TandemProxy],
     input_ingredient: str,
     textlist_of_ailes: str = "",
 ) -> str:
@@ -207,7 +210,7 @@ def llm_categorize_ingredient_by_aile(
     return llm_output_aile
 
 
-def llm_sum_same_ingredients(llmObj: LlmProxy, ingredients_aile):
+def llm_sum_same_ingredients(llmObj: Union[LlmProxy, TandemProxy], ingredients_aile):
 
     user_sum_ingredients = f"""
 
@@ -236,7 +239,7 @@ def llm_sum_same_ingredients(llmObj: LlmProxy, ingredients_aile):
 
 
 def pipeline_get_grocery_list(
-    llmObj: LlmProxy, list_with_quantity_ingredients: list[dict]
+    llmObj: Union[LlmProxy, TandemProxy], list_with_quantity_ingredients: list[dict]
 ) -> list:
     out_grocery_list = []
 
@@ -280,7 +283,7 @@ def pipeline_get_grocery_list(
 
 
 def pipeline_get_grocery_list_from_text(
-    llmObj: LlmProxy, text_with_recipes: str
+    llmObj: Union[LlmProxy, TandemProxy], text_with_recipes: str
 ) -> tuple[str, str]:
     out_grocery_list = []
 
@@ -416,8 +419,8 @@ def pipeline_get_grocery_list_from_text(
     return out_grocery_list, format_list_to_textlist(list_recipes)
 
 
-def pipeline_get_grocery_list_from_dict(
-    llmObj: LlmProxy, list_with_quantity_ingredients: list[dict]
+async def async_pipeline_get_grocery_list_from_dict(
+    llmObj: Union[LlmProxy, TandemProxy], list_with_quantity_ingredients: list[dict]
 ) -> list:
 
     list_of_ailes = get_list_of_ailes()
