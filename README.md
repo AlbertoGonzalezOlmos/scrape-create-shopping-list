@@ -8,6 +8,7 @@ In this repository I am automating what we have been doing every week for a whil
 1. use `llama3.1 70b` (or 405b) through `groq` or `togetherai` to group ingredients by aile and create a shopping list to print/send by email.
 
 TODO:
+- asynchronous categorization of ingredients.
 - send list of recipes and ingredients to a list of email addresses.
    
 
