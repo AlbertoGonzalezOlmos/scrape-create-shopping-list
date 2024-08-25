@@ -443,6 +443,7 @@ def pipeline_get_grocery_list_from_dict(
                 fore_colour="yellow",
                 back_colour="black",
             )
+            + "{}".format(iIngredient["ingredient"])
         )
 
         aile = llm_categorize_ingredient_by_aile(
@@ -453,13 +454,7 @@ def pipeline_get_grocery_list_from_dict(
 
         print(
             _col_text(
-                string="  - ",
-                fore_colour="yellow",
-                back_colour="black",
-            ),
-            "{}".format(iIngredient["ingredient"]),
-            _col_text(
-                string="  -> ",
+                string="  - category found: ",
                 fore_colour="yellow",
                 back_colour="black",
             ),
