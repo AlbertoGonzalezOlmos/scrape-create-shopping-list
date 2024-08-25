@@ -37,31 +37,24 @@ async def main():
             list_quantity_ingredients
         )
     )
-    modality = "chat"
-    try:
-        provider = "together"
 
-        model = "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"
-    except:
-        provider = "groq"
-        model = "llama-3.1-70b-versatile"
+    print(quantity_ingredient_listdict)
 
-    # llmObj = LlmProxy(provider=provider, modality=modality, model=model)
-    llmObj = TandemProxy(model="llama-3.1-8b")
+    tandem_llm = TandemProxy(model="llama-3.1-70b")
 
-    grocery_list = async_pipeline_get_grocery_list_from_dict(
-        llmObj, quantity_ingredient_listdict
+    grocery_list = await async_pipeline_get_grocery_list_from_dict(
+        tandem_llm, quantity_ingredient_listdict
     )
 
     print(grocery_list)
 
-    output_grocery_list_PDF = "out_grocery_list_PDF"
-    output_grocery_list_PDF_path = create_output_path(output_grocery_list_PDF)
-    output_grocery_list_PDF_name = f"w{week_number}_grocery_list"
-    output_grocery_list_PDF_path_name = (
-        output_grocery_list_PDF_path + output_grocery_list_PDF_name
-    )
-    write_pdf(output_grocery_list_PDF_path_name, grocery_list)
+    # output_grocery_list_PDF = "out_grocery_list_PDF"
+    # output_grocery_list_PDF_path = create_output_path(output_grocery_list_PDF)
+    # output_grocery_list_PDF_name = f"w{week_number}_grocery_list"
+    # output_grocery_list_PDF_path_name = (
+    #     output_grocery_list_PDF_path + output_grocery_list_PDF_name
+    # )
+    # write_pdf(output_grocery_list_PDF_path_name, grocery_list)
 
 
 if __name__ == "__main__":
